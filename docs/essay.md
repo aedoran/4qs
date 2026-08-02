@@ -1,4 +1,4 @@
-# 4 Questions Essay
+# 4 Questions
 
 I was diagnosed with type 1 diabetes in 1988. I was nine years old and a person in a lab coat told me not to worry, we will have a cure in about five years. To a nine year old the lab coat is the authority and who would argue with science?
 
@@ -163,3 +163,50 @@ Two billion extra heartbeats per person is what functioning institutions bought 
 So this is not maintenance work on a tired inheritance. Building institutions is the thing we turn out to be good at, maybe the best at, better than we are at almost anything we actually celebrate. And we are about to need that skill at full strength, because the problems arriving now are exactly the kind that no hero fixes. AI. Climate. The poverty we have never finished solving. Every one of them is a coordination problem at a scale no person frame can even hold in view. None of them get handled by finding the right person to believe in. That approach is currently on offer, loudly, and it is the oldest product in the catalog. They get handled the way the last two billion heartbeats got handled. By building machinery that works even when the people inside it are ordinary, tired, and occasionally wrong. And by enough of us knowing how to check whether it does.
 
 Corporations are not people. Neither is anything else with a logo. I understand now that this is not the bad news. It is the reason everything can be fixed. You cannot rebuild a character. You cannot audit a soul. But incentives, corrections, verification, and exit are all just machinery, and machinery can be built, and inspected, and built better. We are the species that builds it. We have the heartbeats to prove it.
+
+## Notes and sources
+
+Sources for the essay's factual claims, in order of appearance. Every link is a primary document (court opinion, government report, regulatory filing, peer-reviewed paper) or a source of record where the primary is impractical. Where the text flags a number as contested, the note says so.
+
+**What got smuggled in**
+
+- *Citizens United v. FEC* (558 U.S. 310; 5–4; argued March 1, 2009, reargued September 9, 2009, decided January 21, 2010): official opinion — [U.S. Reports, tile.loc.gov](https://tile.loc.gov/storage-services/service/ll/usrep/usrep558/usrep558310/usrep558310.pdf). The oral-argument book-banning hypothetical and the reargument — [Reason](https://reason.com/2010/06/29/will-elena-kagan-allow-books/).
+- Romney, "Corporations are people, my friend," Iowa State Fair, August 2011 — [NPR](https://www.npr.org/2011/08/12/139570714/romney-stops-by-iowa-state-fair).
+- Local resolutions against corporate personhood (Tucson City Council, 2012) — [Arizona Daily Independent](https://arizonadailyindependent.com/2012/06/13/tucson-council-votes-against-corporate-personhood/).
+
+**The outrage machine finds its fuel**
+
+- Cambridge Analytica's psychographic targeting was neither novel nor measurably effective — [NBC News](https://www.nbcnews.com/politics/politics-news/cambridge-analytica-s-effectiveness-called-question-despite-alleged-facebook-data-n858256); peer-reviewed analysis — [SSRN (2024)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4843786).
+
+**The program you are running**
+
+- Yamagishi's trust-vs-assurance distinction (mapped to *shinrai* / *anshin*): *Trust: The Evolutionary Game of Mind and Society* (Springer, 2011) — [publisher page](https://www.springer.com/jp/book/9784431539353); Yamagishi & Yamagishi, "Trust and commitment in the United States and Japan," *Motivation and Emotion* (1994) — [Springer](https://link.springer.com/article/10.1007/BF02249397).
+- CDC mask reversal: Surgeon General Adams, "Seriously people—STOP BUYING MASKS!", February 29, 2020 — [CNN](https://www.cnn.com/2020/02/29/health/face-masks-coronavirus-surgeon-general-trnd/index.html); CDC recommendation of cloth face coverings and the presymptomatic-transmission evidence behind it — [CDC MMWR](https://www.cdc.gov/mmwr/volumes/69/wr/mm6928e3.htm).
+
+**One. Can I identify the incentives?**
+
+- 2008 credit-rating agencies and the issuer-pays conflict — [FCIC Final Report](https://fcic-static.law.stanford.edu/cdn_media/fcic-reports/fcic_final_report_conclusions.pdf); Senate investigations hearing — [govinfo](https://www.govinfo.gov/content/pkg/CHRG-111shrg57321/html/CHRG-111shrg57321.htm).
+- Boeing 737 MAX (346 deaths across Lion Air 2018 and Ethiopian 2019; FAA certification delegated to Boeing; 2012 DOT Inspector General finding that FAA staff feared retaliation) — [PBS FRONTLINE](https://www.pbs.org/wgbh/frontline/article/boeing-guilty-plea-fraud-737-max-plane-crashes/); [POGO](https://www.pogo.org/analyses/how-the-faa-ceded-aviation-safety-oversight-to-boeing).
+- Federal Reserve independence by design (14-year staggered terms; funding outside congressional appropriations) — [Federal Reserve History](https://www.federalreservehistory.org/essays/board-of-governors).
+
+**Two. Can I see the mistakes and the corrections?**
+
+- Independent aviation investigation and the safety record — [NTSB reports](https://www.ntsb.gov/investigations/AccidentReports/Pages/Reports.aspx); [USAFacts, flying vs. driving](https://usafacts.org/articles/is-flying-safer-than-driving/).
+- Catholic Church abuse and the reassignment pattern (Boston Globe Spotlight, January 2002) — [Boston Globe](https://www.bostonglobe.com/news/special-reports/2002/01/06/church-allowed-abuse-priest-for-years/cSHfGkTIrAT25qKGvBuDNM/story.html).
+- Volkswagen "dieselgate" (WVU researchers on a ~$69,000 ICCT contract; NOx exceedances of ~15–35×; EPA Notice of Violation, September 18, 2015) — [ICCT timeline](https://theicct.org/dieselgate-emissions-scandal/); [EPA Notice of Violation (PDF)](https://www.epa.gov/sites/default/files/2015-10/documents/vw-nov-caa-09-18-15.pdf).
+
+**Three. Can someone outside verify the claims?**
+
+- The handicap principle / costly signaling (Zahavi) — [peer-reviewed review, Penn & Számadó (2020)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7004190/).
+- Tylenol, 1982 (seven deaths; ~31 million-bottle recall; tamper-evident packaging) — [PBS NewsHour](https://www.pbs.org/newshour/health/tylenol-murders-1982); [TIME](https://time.com/3423136/tylenol-deaths-1982/).
+- BP Deepwater Horizon (11 workers killed; Hayward's "I'd like my life back") — [ABC News](https://abcnews.go.com/Business/bp-ceo-tony-hayward-oil-ninja-congressional-hot/story?id=10931147).
+- FTX (no meaningful controls; roughly $8 billion customer shortfall) — sworn testimony of John J. Ray III, December 13, 2022 — [House Financial Services (PDF)](https://democrats-financialservices.house.gov/uploadedfiles/hhrg-117-ba00-wstate-rayj-20221213.pdf). The later estate recovery and the dispute over the $8B loss figure — [Crypto Times](https://www.cryptotimes.io/2026/07/31/ftx-creditors-105-recovery-why-exchanges-clients-are-getting-more-than-they-lost/). (As the essay says, this is the one number that most deserves a caveat.)
+
+**Four. Can I leave?**
+
+- Equifax, 2017 (~147 million people; ~145 million Social Security numbers; an unpatched Apache Struts flaw its own team had flagged; settlement of at least $575 million, up to $700 million) — [FTC press release](https://www.ftc.gov/news-events/news/press-releases/2019/07/equifax-pay-575-million-part-settlement-ftc-cfpb-states-related-2017-data-breach); [CFPB announcement](https://www.consumerfinance.gov/archive/newsroom/cfpb-ftc-states-announce-settlement-with-equifax-over-2017-data-breach/).
+- Islet-cell therapy (Edmonton Protocol, 2000; the 2025 lab-grown/zimislecel trial in which 10 of 12 recipients no longer needed insulin at one year) — [Edmonton Protocol review, PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3437295/); [NEJM (2025)](https://www.nejm.org/doi/abs/10.1056/NEJMoa2506549) ([PubMed](https://pubmed.ncbi.nlm.nih.gov/40544428/)).
+
+**Three billion heartbeats**
+
+- Roughly a billion heartbeats per mammalian lifetime and quarter-power allometric scaling (heart rate ∝ mass^−1/4, lifespan ∝ mass^+1/4) — [West, Woodruff & Brown, PNAS (2002)](https://www.pnas.org/doi/10.1073/pnas.012579799); heart rate and lifespan across species — [Zhang & Zhang (2009)](https://www.researchgate.net/publication/23486438_Heart_rate_lifespan_and_mortality_risk).
