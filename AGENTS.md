@@ -4,18 +4,23 @@ Guidance for agents working in this repo.
 
 ## What this is
 
-A single-essay static site. One Markdown source is compiled to two HTML pages
-plus a stylesheet. No framework, no client-side JS, no runtime — just a build
-script that renders Markdown and wraps it in an HTML template.
+A static site with two parts: a long-form **essay** and an **institutions wiki**
+that rates institutions on the essay's four questions. Markdown sources compile
+to HTML plus a stylesheet. No framework, no client-side JS, no runtime — one
+build script renders Markdown, parses YAML front matter, and generates the wiki
+pages, scorecards, and index.
 
 ## Layout
 
 ```
-docs/essay.md   ← the content. Edit this to change the essay.
-build.mjs       ← the whole build: Markdown → HTML, inline CSS, page template.
-package.json    ← "build" script + marked dependency.
-vercel.json     ← deploy config (buildCommand, outputDirectory: dist).
-dist/           ← generated output. Git-ignored. NEVER edit by hand.
+docs/essay.md          ← the essay. Edit to change essay prose.
+docs/methodology.md    ← the wiki's rating rubric (source of truth).
+docs/institutions/     ← one Markdown file per institution (+ _template.md).
+build.mjs              ← the whole build: Markdown → HTML, front-matter parsing,
+                         scorecards, validation, index, inline CSS, template.
+package.json           ← "build" script; deps: marked, gray-matter.
+vercel.json            ← deploy config (buildCommand, outputDirectory: dist).
+dist/                  ← generated output. Git-ignored. NEVER edit by hand.
 ```
 
 There is no `src/`, `index.html`, or `style.css` in the repo root — those live
@@ -23,33 +28,56 @@ inside `build.mjs` as template strings and are emitted into `dist/`.
 
 ## How to work with it
 
-- **Change the essay** → edit `docs/essay.md`. It is standard Markdown parsed by
-  `marked`. Headings (`##`) become the section structure of the essay page.
-- **Change layout, `<head>`, page titles/descriptions** → edit the `page()`
-  function and the two `writeFile` calls in `build.mjs`.
-- **Change styling** → edit the `css` template string in `build.mjs` (design is
-  deliberately black-on-white; the dark-mode block is intentionally a no-op).
+- **Change the essay** → edit `docs/essay.md`. Standard Markdown parsed by
+  `marked`; `##` headings become the essay's sections.
+- **Add/edit an institution** → copy `docs/institutions/_template.md`, fill the
+  front matter and narrative. Every rating other than `unrated` needs a source
+  or the build fails. See `docs/methodology.md` for the rubric.
+- **Change the rubric** → edit `docs/methodology.md` AND keep the `QUESTIONS` /
+  `RATINGS` constants and `validate()` in `build.mjs` in sync.
+- **Change layout, `<head>`, titles** → the `page()` function and the `writeFile`
+  calls in `build.mjs`.
+- **Change styling** → the `css` string in `build.mjs` (deliberately
+  black-on-white; the dark-mode block is intentionally a no-op).
 - **Never edit `dist/`.** It is wiped (`rm`) and regenerated on every build.
 
 ## Build & verify
 
 ```
-npm install      # first time only; installs marked
-npm run build    # runs build.mjs → writes dist/{index,essay}.html + style.css
+npm install      # installs marked + gray-matter
+npm run build    # runs build.mjs → writes dist/
 ```
 
-The build is the smoke test. After any change, run `npm run build` and confirm
-it prints `Built: dist/index.html dist/essay.html dist/style.css` with no error,
-then open `dist/essay.html` to eyeball the rendered result. Deploy is handled by
-Vercel using `vercel.json` (`cleanUrls: true`, so `/essay` serves `essay.html`).
+The build is the smoke test, and it validates the wiki: a rating other than
+`unrated` with no source, an unknown rating value, or a source id not in the
+page's `sources` map fails the build with exit 1. Success prints
+`Built: dist/ (N institution page(s) + essay, methodology, index)`. Preview
+locally with `npx serve dist` and open `/institutions/`. Deploy is handled by
+Vercel via `vercel.json` (`cleanUrls: true`, so `/essay` serves `essay.html`).
 
 ## Conventions
 
 - ES modules (`"type": "module"`), Node built-ins (`node:fs/promises`).
-- Keep the toolchain minimal — a lone `marked` dependency is the point. Do not
-  add a framework, bundler, or CSS pipeline without a real reason.
-- Prose edits go in `docs/essay.md`; structural/presentation edits go in
-  `build.mjs`. Keep that split.
+- Keep the toolchain minimal — `marked` + `gray-matter` only. Do not add a
+  framework, bundler, or CSS pipeline without a real reason.
+- Prose edits go in `docs/*.md`; structural/presentation/validation logic goes
+  in `build.mjs`. Keep that split.
+
+## The institutions wiki
+
+Each institution is one Markdown file in `docs/institutions/`: YAML front matter
+for the structured data, Markdown below for the narrative.
+
+- **Front matter** carries `scorecard` (the four questions `incentives`,
+  `corrections`, `verification`, `exit`), a `sources` map of `id → url`, plus
+  `flags`, `sector`, `type`, `last_reviewed`, `confidence`.
+- **Ratings**: `strong | partial | weak | absent | unrated`. Any non-`unrated`
+  rating MUST cite a source id present in `sources`, enforced at build time.
+  Exit for a singular institution (central bank, court) uses `by_design: true`
+  and renders "None · by design" — not a failure.
+- **No overall score.** The four ratings are never summed or averaged.
+- The scorecard table, sources list, and index are **generated** from the front
+  matter — do not hand-write them in the page body.
 
 ---
 
@@ -67,8 +95,9 @@ institution:** Is he sincere? Consistent? Loyal to me? Sorry when he screws up?
 At institutional scale each inverts — sincerity is a marketing deliverable,
 consistency punishes institutions that self-correct, loyalty to *you* is
 literally corruption, and an apology costs the institution nothing. Run this
-program and you build "a detector installed backwards": it fires on the honest
-and stays silent for the fraud. (Related idea: Japanese *shinrai* — trust in a
+program and, at best, you learn nothing (the signals cost the same whether the
+truth is good or bad) and, at worst, you read it backwards, because the fraud
+invests most in seeming sincere. (Related idea: Japanese *shinrai* — trust in a
 person's character — vs *anshin* — security because the structure makes betrayal
 a bad move. Institutions can only produce *anshin*.)
 
