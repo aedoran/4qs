@@ -230,8 +230,7 @@ await writeFile(
     home: true,
     body: `<h1>Four Questions</h1>
 <p>An essay on how to trust the things that aren't people.</p>
-<p class="cta"><a href="/essay.html">Read the essay &rarr;</a></p>
-<p class="cta"><a href="/institutions/">Browse the institutions wiki &rarr;</a></p>`,
+<p class="cta"><a href="/essay.html">Read the essay &rarr;</a></p>`,
   })
 );
 
