@@ -1,50 +1,61 @@
-import { readFile, writeFile, mkdir, rm, readdir } from "node:fs/promises";
+import { readFile, writeFile, mkdir, rm, readdir, copyFile } from "node:fs/promises";
 import { marked } from "marked";
 import matter from "gray-matter";
 
 const OUT = "dist";
 
-const css = `:root { color-scheme: light; }
+const css = `:root {
+  color-scheme: light;
+  --ink: #33383d;
+  --ink-soft: #565f66;
+  --muted: #7c848b;
+  --bg: #ffffff;
+  --bg-tint: #f4f5f6;
+  --line: #d9dcdf;
+  --panel: #c5c5c5;
+  --cool: #b7bcc1;
+}
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: #ffffff;
-  color: #111111;
+  background: var(--bg);
+  color: var(--ink);
   font: 18px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 main { max-width: 42rem; margin: 0 auto; padding: clamp(2.5rem, 6vw, 5rem) 1.25rem 6rem; }
-a { color: #111111; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+a { color: var(--ink); text-underline-offset: 2px; text-decoration-thickness: 1px; }
 a:hover { text-decoration: none; }
 h1 { font-size: clamp(1.7rem, 5vw, 2.2rem); line-height: 1.2; margin: 0 0 1.5rem; letter-spacing: -0.01em; }
 h2 { font-size: clamp(1.25rem, 3.5vw, 1.5rem); line-height: 1.3; margin: 2.75rem 0 1rem; }
 p { margin: 0 0 1.25rem; }
-hr { border: 0; border-top: 1px solid #e5e5e5; margin: 2.5rem 0; }
-blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid #ddd; color: #333; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--cool); color: var(--ink-soft); }
 code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9em; }
 .nav { font-size: 0.95rem; margin-bottom: 2.5rem; }
 .home { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-.home p { color: #444; }
+.home p { color: var(--ink-soft); }
 .home .cta { margin-top: 0.5rem; font-size: 1.05rem; }
 .home .cta a { font-weight: 600; }
-.meta { color: #666; font-size: 0.85rem; margin: -0.75rem 0 1.5rem; }
+.home .logo { width: 88px; height: auto; margin-bottom: 1.75rem; }
+.meta { color: var(--muted); font-size: 0.85rem; margin: -0.75rem 0 1.5rem; }
 table { border-collapse: collapse; width: 100%; margin: 1.5rem 0; font-size: 0.95rem; }
-th, td { border: 1px solid #e5e5e5; padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
-th { background: #fafafa; font-weight: 600; }
-.scorecard td .note, .index .note { color: #666; font-size: 0.82rem; }
+th, td { border: 1px solid var(--line); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
+th { background: var(--bg-tint); font-weight: 600; }
+.scorecard td .note, .index .note { color: var(--muted); font-size: 0.82rem; }
 .scorecard td.q { white-space: nowrap; font-weight: 600; }
-.badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid #ccc; white-space: nowrap; }
+.badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--panel); white-space: nowrap; }
 .r-strong { background: #e7f5e7; border-color: #bcdbbc; }
 .r-partial { background: #fdf6e3; border-color: #e8dcae; }
 .r-weak { background: #fdeaea; border-color: #e6bcbc; }
 .r-absent { background: #eeeeee; border-color: #cccccc; }
-.r-unrated { background: #ffffff; color: #999999; }
+.r-unrated { background: var(--bg); color: var(--muted); }
 .srcs { font-size: 0.78rem; }
-.srcs a { color: #555; }
-ol.sources { font-size: 0.85rem; color: #444; }
-ol.sources code { color: #111; }
+.srcs a { color: var(--ink-soft); }
+ol.sources { font-size: 0.85rem; color: var(--ink-soft); }
+ol.sources code { color: var(--ink); }
 @media (prefers-color-scheme: dark) {
   /* keep it black on white per design; do nothing */
 }
@@ -60,6 +71,9 @@ function page({ title, description = "", body, home = false }) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title}</title>${description ? `\n<meta name="description" content="${description}">` : ""}
 <link rel="stylesheet" href="/style.css">
+<link rel="icon" type="image/svg+xml" href="/4qs_square.svg">
+<link rel="icon" type="image/png" href="/4qs_square.png">
+<link rel="apple-touch-icon" href="/4qs_square.png">
 </head>
 <body>
 <main${home ? ' class="home"' : ""}>
@@ -174,6 +188,8 @@ await rm(OUT, { recursive: true, force: true });
 await mkdir(`${OUT}/institutions`, { recursive: true });
 
 await writeFile(`${OUT}/style.css`, css);
+await copyFile("4qs_square.svg", `${OUT}/4qs_square.svg`);
+await copyFile("4qs_square.png", `${OUT}/4qs_square.png`);
 
 const md = await readFile("docs/essay.md", "utf8");
 const machineryMd = await readFile("docs/existing_machinery.md", "utf8");
@@ -229,7 +245,8 @@ await writeFile(
     title: "Four Questions",
     description: "An essay on how to trust institutions.",
     home: true,
-    body: `<h1>Four Questions</h1>
+    body: `<img class="logo" src="/4qs_square.svg" alt="Four Questions logo" width="88" height="88">
+<h1>Four Questions</h1>
 <p>An essay on how to trust the things that aren't people.</p>
 <p class="cta"><a href="/essay.html">Read the essay &rarr;</a></p>
 <p class="cta"><a href="/essay.html#existing-machinery">Existing machinery &rarr;</a></p>`,
