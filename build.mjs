@@ -14,6 +14,8 @@ const css = `:root {
   --line: #d9dcdf;
   --panel: #c5c5c5;
   --cool: #b7bcc1;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --serif: Charter, "Iowan Old Style", Georgia, Cambria, "Times New Roman", serif;
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -21,32 +23,32 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font: 18px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font: 18px/1.7 var(--serif);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 main { max-width: 42rem; margin: 0 auto; padding: clamp(2.5rem, 6vw, 5rem) 1.25rem 6rem; }
 a { color: var(--ink); text-underline-offset: 2px; text-decoration-thickness: 1px; }
 a:hover { text-decoration: none; }
-h1 { font-size: clamp(1.7rem, 5vw, 2.2rem); line-height: 1.2; margin: 0 0 1.5rem; letter-spacing: -0.01em; }
-h2 { font-size: clamp(1.25rem, 3.5vw, 1.5rem); line-height: 1.3; margin: 2.75rem 0 1rem; }
+h1 { font-family: var(--sans); font-size: clamp(1.7rem, 5vw, 2.2rem); line-height: 1.2; margin: 0 0 1.5rem; letter-spacing: -0.01em; }
+h2 { font-family: var(--sans); font-size: clamp(1.25rem, 3.5vw, 1.5rem); line-height: 1.3; margin: 2.75rem 0 1rem; }
 p { margin: 0 0 1.25rem; }
 hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--cool); color: var(--ink-soft); }
 code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.9em; }
-.nav { font-size: 0.95rem; margin-bottom: 2.5rem; }
+.nav { font-family: var(--sans); font-size: 0.95rem; margin-bottom: 2.5rem; }
 .home { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
 .home p { color: var(--ink-soft); }
 .home .cta { margin-top: 0.5rem; font-size: 1.05rem; }
 .home .cta a { font-weight: 600; }
 .home .logo { width: 88px; height: auto; margin-bottom: 1.75rem; }
-.meta { color: var(--muted); font-size: 0.85rem; margin: -0.75rem 0 1.5rem; }
-table { border-collapse: collapse; width: 100%; margin: 1.5rem 0; font-size: 0.95rem; }
+.meta { font-family: var(--sans); color: var(--muted); font-size: 0.85rem; margin: -0.75rem 0 1.5rem; }
+table { font-family: var(--sans); font-variant-numeric: tabular-nums; border-collapse: collapse; width: 100%; margin: 1.5rem 0; font-size: 0.95rem; }
 th, td { border: 1px solid var(--line); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
 th { background: var(--bg-tint); font-weight: 600; }
 .scorecard td .note, .index .note { color: var(--muted); font-size: 0.82rem; }
 .scorecard td.q { white-space: nowrap; font-weight: 600; }
-.badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--panel); white-space: nowrap; }
+.badge { font-family: var(--sans); display: inline-block; padding: 0.1rem 0.55rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--panel); white-space: nowrap; }
 .r-strong { background: #e7f5e7; border-color: #bcdbbc; }
 .r-partial { background: #fdf6e3; border-color: #e8dcae; }
 .r-weak { background: #fdeaea; border-color: #e6bcbc; }
@@ -54,7 +56,7 @@ th { background: var(--bg-tint); font-weight: 600; }
 .r-unrated { background: var(--bg); color: var(--muted); }
 .srcs { font-size: 0.78rem; }
 .srcs a { color: var(--ink-soft); }
-ol.sources { font-size: 0.85rem; color: var(--ink-soft); }
+ol.sources { font-family: var(--sans); font-size: 0.85rem; color: var(--ink-soft); }
 ol.sources code { color: var(--ink); }
 @media (prefers-color-scheme: dark) {
   :root {
