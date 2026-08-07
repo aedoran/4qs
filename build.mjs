@@ -176,12 +176,13 @@ await mkdir(`${OUT}/institutions`, { recursive: true });
 await writeFile(`${OUT}/style.css`, css);
 
 const md = await readFile("docs/essay.md", "utf8");
+const machineryMd = await readFile("docs/existing_machinery.md", "utf8");
 await writeFile(
   `${OUT}/essay.html`,
   page({
     title: "4 Questions Essay",
     description: "An essay on how to trust institutions.",
-    body: `<p class="nav"><a href="/">&larr; Home</a></p>\n${marked.parse(md)}`,
+    body: `<p class="nav"><a href="/">&larr; Home</a></p>\n${marked.parse(md)}\n<hr id="existing-machinery">\n${marked.parse(machineryMd)}`,
   })
 );
 
@@ -230,7 +231,8 @@ await writeFile(
     home: true,
     body: `<h1>Four Questions</h1>
 <p>An essay on how to trust the things that aren't people.</p>
-<p class="cta"><a href="/essay.html">Read the essay &rarr;</a></p>`,
+<p class="cta"><a href="/essay.html">Read the essay &rarr;</a></p>
+<p class="cta"><a href="/essay.html#existing-machinery">Existing machinery &rarr;</a></p>`,
   })
 );
 
