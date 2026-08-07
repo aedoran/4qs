@@ -5,7 +5,7 @@ import matter from "gray-matter";
 const OUT = "dist";
 
 const css = `:root {
-  color-scheme: light;
+  color-scheme: light dark;
   --ink: #33383d;
   --ink-soft: #565f66;
   --muted: #7c848b;
@@ -57,7 +57,21 @@ th { background: var(--bg-tint); font-weight: 600; }
 ol.sources { font-size: 0.85rem; color: var(--ink-soft); }
 ol.sources code { color: var(--ink); }
 @media (prefers-color-scheme: dark) {
-  /* keep it black on white per design; do nothing */
+  :root {
+    --ink: #d7dce1;
+    --ink-soft: #a6adb4;
+    --muted: #838b92;
+    --bg: #1b1f23;
+    --bg-tint: #262b30;
+    --line: #363c42;
+    --panel: #565f66;
+    --cool: #565f66;
+  }
+  .r-strong { background: #1f3a26; border-color: #315a3c; color: #bfe6c8; }
+  .r-partial { background: #3a3418; border-color: #5a5024; color: #ecd9a4; }
+  .r-weak { background: #3a2020; border-color: #5a3030; color: #e8b6b6; }
+  .r-absent { background: #2c3237; border-color: #444b52; color: #c3c9cf; }
+  .r-unrated { background: transparent; color: var(--muted); }
 }
 `;
 
